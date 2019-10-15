@@ -1,5 +1,6 @@
 package com.sts.demo.filter;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 @WebFilter(filterName = "SystemApplicationFilter", urlPatterns = {"/*"},
         initParams = {@WebInitParam(name = "ignoredUrl", value = ".css#.js#.jpg#.png#.gif#.ico"),
                 @WebInitParam(name = "filterPath",
@@ -56,7 +58,11 @@ public class SystemApplicationFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-        servletResponse.sendRedirect("/index.html");
+        if(requestUrl != null && requestUrl.equals("/login.html")){
+            chain.doFilter(request, response);
+            return;
+        }
+        servletResponse.sendRedirect("/login.html");
     }
 
     @Override
