@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @WebFilter(filterName = "SystemApplicationFilter", urlPatterns = {"/*"},
@@ -26,6 +27,7 @@ public class SystemApplicationFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        //初始化被允许的url以及不进行过滤的url类型
         String filterPath = filterConfig.getInitParameter(FILTER_PATH);
         if (!StringUtils.isEmpty(filterPath)) {
             allowUrls = filterPath.contains("#") ? filterPath.split("#") : new String[]{filterPath};
@@ -34,9 +36,11 @@ public class SystemApplicationFilter implements Filter {
         String ignoredPath = filterConfig.getInitParameter(IGNORED_PATH);
         if (!StringUtils.isEmpty(ignoredPath)) {
             ignoredUrls = ignoredPath.contains("#") ? ignoredPath.split("#") : new String[]{ignoredPath};
-            for (String ignoredUrl : ignoredUrls) {
-                ignoredList.add(ignoredUrl);
-            }
+//            for (String ignoredUrl : ignoredUrls) {
+//                ignoredList.add(ignoredUrl);
+//            }
+
+            ignoredList.addAll(Arrays.asList(ignoredUrls));
         }
     }
 
