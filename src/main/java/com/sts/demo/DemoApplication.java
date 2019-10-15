@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
-
+/**启动类*/
 @SpringBootApplication
 public class DemoApplication {
 
