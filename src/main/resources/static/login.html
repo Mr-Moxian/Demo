@@ -1,17 +1,11 @@
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <title>登录界面</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="/layui/css/layui.css">
-    <link rel="stylesheet" href="/layui/css/login.css">
-    <script src="/layui/layui.js"></script>
-    <!--<script src="layui/layui.all.js"></script>-->
-    <script src="https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc"></script><script>
-    /^http(s*):\/\//.test(location.href) || alert('请先部署到 localhost 下再访问');
-    </script>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./layui/css/login.css">
+    <script src="./layui/layui.js"></script>
+    <script src="./layui/layui.all.js"></script>
 </head>
 <body layadmin-themealias="default" class="layui-layout-body">
 <div id="LAY_app" class="layadmin-tabspage-none">
@@ -45,7 +39,7 @@
                 </div>
             </div>
             <div class="layui-form-item" style="margin-bottom: 20px;">
-                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码"><div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i class="layui-icon layui-icon-ok"></i></div>
+                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码"><div class="layui-unselect layui-form-checkbox" style="height:fit-content" lay-skin="primary" id="loginCheckBox"  onclick="onLoginCheckboxClicked()"><span>记住密码</span><i class="layui-icon layui-icon-ok"></i></div>
                 <a lay-href="/user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
             </div>
             <div class="layui-form-item">
@@ -74,6 +68,24 @@
 
     </div>
     <script>
+        function onLoginCheckboxClicked(e){
+            var classList = document.getElementById("loginCheckBox").classList;
+            if(classList != null && classList.length > 0){
+                var isCheckFlag = false;
+                for (var i = 0;i < classList.length ; i ++) {
+                    if(classList.contains("layui-form-checked")){
+                        isCheckFlag = true;
+                        break;
+                    }
+                }
+                if(isCheckFlag){
+                    document.getElementById("loginCheckBox").classList.value = "layui-unselect layui-form-checkbox"
+                }
+                else{
+                    document.getElementById("loginCheckBox").classList.add("layui-form-checked");
+                }
+            }
+        }
     layui.use(['admin', 'form', 'user'], function(){
         var $ = layui.$
             ,setter = layui.setter
