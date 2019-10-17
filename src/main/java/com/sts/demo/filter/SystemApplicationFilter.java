@@ -26,7 +26,7 @@ public class SystemApplicationFilter implements Filter {
     //private static final String FILTER_PATH = "filterPath";
     //private static final String IGNORED_PATH = "ignoredUrl";
 
-    private static final String FILTER_PATH = "/user/login#/user/registerUser";
+    private static final String FILTER_PATH = "/user/login#/user/registerUser#/user/imageCode";
     private static final String IGNORED_PATH = ".css#.js#.jpg#.png#.gif#.ico#.woff2#.eot";
 
     private static final List<String> ignoredList = new ArrayList<>();

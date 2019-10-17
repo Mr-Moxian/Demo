@@ -36,7 +36,7 @@
                     </div>
                     <div class="layui-col-xs5">
                         <div style="margin-left: 10px;">
-                            <img src="https://www.oschina.net/action/user/captcha" class="layadmin-user-login-codeimg" id="LAY-user-get-vercode">
+                            <img class="layadmin-user-login-codeimg" id="LAY-user-get-vercode" onclick="onChangeCode()">
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="layui-trans layadmin-user-login-footer">
+    <!--<div class="layui-trans layadmin-user-login-footer">
 
         <p>© 2018 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
         <p>
@@ -67,10 +67,29 @@
             <span><a href="http://www.layui.com/admin/pro/" target="_blank">在线演示</a></span>
             <span><a href="http://www.layui.com/admin/" target="_blank">前往官网</a></span>
         </p>
-    </div>
+    </div>-->
 
     </div>
     <script>
+        $(function(){
+            onChangeCode();
+        });
+        //生成校验码
+        function onChangeCode(){
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/user/imageCode" ,
+                data:{},
+                success: function (result) {
+                    $("#LAY-user-get-vercode").attr('src',result.png_base64)
+
+                },
+                error : function() {
+                    alert("操作发生异常，请刷新页面后再试！");
+                }
+            });
+        }
         function onLoginCheckboxClicked(e){
             var classList = document.getElementById("loginCheckBox").classList;
             if(classList != null && classList.length > 0){
@@ -114,17 +133,20 @@
                 dataType: "json",
                 data : params,
                 success : function(data){
-                    layuiMsgInfo("登录成功");
                     if(data.success){
+                        layuiMsgInfo("登录成功");
                         window.location.href = "/index.html";
                     }
                     else{
                         layuiMsgError(data.message);
+                        //重新请求生成新的校验码
+                        onChangeCode();
                     }
                 },
                 error : function(err){
                     layuiMsgInfo(err);
                     layuiMsgError("登录失败");
+                    onChangeCode();
                 }
             });
         }
