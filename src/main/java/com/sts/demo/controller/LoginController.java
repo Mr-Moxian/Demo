@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -44,6 +45,21 @@ public class LoginController {
             }
         }
 
+        return result;
+    }
+
+    /**登出*/
+    @RequestMapping(value = "/loginout",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultVO loginOut(HttpServletResponse response, HttpServletRequest request){
+        ResultVO result = new ResultVO();
+        try {
+            request.getSession().removeAttribute("userinfo");
+            response.sendRedirect("/login.html");
+        }catch (Exception e){
+            result.setSuccess(false);
+            result.setMessage(e.getMessage());
+        }
         return result;
     }
 }
