@@ -1,6 +1,6 @@
 package com.sts.demo.service;
 
-import com.sts.demo.Entity.People;
+import com.sts.demo.entities.People;
 import com.sts.demo.dao.PeopleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

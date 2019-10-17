@@ -1,7 +1,7 @@
-package com.sts.demo.Entity;
+package com.sts.demo.entities.datasource;
 
 /**
- * 用户信息表
+ * 用户表
  * */
 public class UserVO {
 
@@ -13,11 +13,11 @@ public class UserVO {
     //密码
     private String password;
 
-    //性别 0:男 1：女
-    private int sex;
+    //启用状态 1：未启用 2： 已启用 3：已停用
+    private int status;
 
-    //年龄
-    private int age;
+    //数据状态 1：已删除 0：可用
+    private int dr;
 
     //邮箱
     private String email;
@@ -46,27 +46,27 @@ public class UserVO {
         this.password = password;
     }
 
-    public int getSex() {
-        return sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getDr() {
+        return dr;
+    }
+
+    public void setDr(int dr) {
+        this.dr = dr;
     }
 }

@@ -1,6 +1,7 @@
 package com.sts.demo;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import org.springframework.core.env.Environment;
 import javax.sql.DataSource;
 /**启动类*/
 @SpringBootApplication
+@MapperScan(basePackages = {"com.sts.demo.entities.mapper"})
 public class DemoApplication {
 
     public static void main(String[] args) {

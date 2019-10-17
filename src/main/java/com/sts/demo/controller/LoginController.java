@@ -1,15 +1,14 @@
 package com.sts.demo.controller;
 
-import com.sts.demo.Entity.ResultVO;
-import com.sts.demo.Entity.UserVO;
-import com.sts.demo.Entity.login.LoginParamVO;
+import com.sts.demo.entities.ResultVO;
+import com.sts.demo.entities.datasource.UserVO;
+import com.sts.demo.entities.datasource.LoginParamVO;
 import com.sts.demo.service.login.ILoginService;
 import com.sts.demo.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
 package com.sts.demo.service.login;
 
-import com.sts.demo.Entity.ResultVO;
-import com.sts.demo.Entity.login.LoginParamVO;
+import com.sts.demo.entities.ResultVO;
+import com.sts.demo.entities.datasource.LoginParamVO;
 
 public interface ILoginService {
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sts.demo.entities.mapper.UserMapper">
+
+    <select id="checkUserNameAndPass" parameterType="com.sts.demo.entities.datasource.LoginParamVO" resultType="java.lang.Integer">
+      select count(*) from t_sys_user where dr = 0
+      <if test="username != null" >
+          and username = #{username}
+      </if>
+        <if test="password != null" >
+            and password = #{password}
+        </if>
+    </select>
+</mapper>

@@ -1,10 +1,9 @@
 package com.sts.demo.controller;
 
-import com.sts.demo.Entity.People;
+import com.sts.demo.entities.People;
 import com.sts.demo.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.sts.demo.Entity;
+package com.sts.demo.entities;
 
 import java.util.List;
 

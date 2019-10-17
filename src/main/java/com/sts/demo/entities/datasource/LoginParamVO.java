@@ -1,4 +1,4 @@
-package com.sts.demo.Entity.login;
+package com.sts.demo.entities.datasource;
 
 /**
  * 登录相关的参数

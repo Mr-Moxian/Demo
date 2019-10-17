@@ -1,6 +1,6 @@
 package com.sts.demo.dao;
 
-import com.sts.demo.Entity.People;
+import com.sts.demo.entities.People;
 
 import java.util.List;
 
