@@ -11,4 +11,37 @@
             and password = #{password}
         </if>
     </select>
+
+    <delete id="deleteFailLoginRecord" parameterType="com.sts.demo.entities.datasource.LoginParamVO">
+        delete from t_login_ctr where 1 = 1
+        <if test="username != null">
+            and username = #{username}
+        </if>
+    </delete>
+
+    <insert id="insertLoginFailRecord" parameterType="com.sts.demo.entities.datasource.LoginParamVO">
+        insert into t_login_ctr
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            logintime,
+            times,
+            createtime
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime},
+            </if>
+            1,
+            <if test="createTime != null">
+                #{createTime}
+            </if>
+        </trim>
+
+    </insert>
 </mapper>
