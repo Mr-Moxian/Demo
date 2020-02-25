@@ -35,15 +35,22 @@ public class LoginServiceImpl implements ILoginService {
             result.setMessage("校验码不可为空");
         }
         else{
+            //判断用户是否被锁定 5分钟之内连续登陆失败三次
+
             // 判断用户名密码是否匹配
             int checkResult = userMapper.checkUserNameAndPass(params);
             if(checkResult > 0){
                 //校验通过，可以登录
+                //删除校验失败的登录记录
+                userMapper.deleteFailLoginRecord(params);
                 result.setMessage("用户名/密码匹配成功，允许登陆！");
                 result.setSuccess(true);
             }
             else{
                 //用户不存在，禁止登陆
+                //
+
+
                 result.setMessage("用户名或密码错误！");
                 result.setSuccess(false);
             }

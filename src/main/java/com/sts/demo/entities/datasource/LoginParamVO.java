@@ -12,6 +12,12 @@ public class LoginParamVO {
     //校验码
     private String checkCode;
 
+    //登陆时间
+    private String loginTime;
+
+    //创建时间
+    private String createTime;
+
     public String getUsername() {
         return username;
     }
@@ -34,5 +40,21 @@ public class LoginParamVO {
 
     public void setCheckCode(String checkCode) {
         this.checkCode = checkCode;
+    }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }

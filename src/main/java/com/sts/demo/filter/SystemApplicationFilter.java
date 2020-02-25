@@ -63,8 +63,11 @@ public class SystemApplicationFilter implements Filter {
         HttpServletResponse servletResponse = (HttpServletResponse) response;
         String requestUrl = servletRequest.getRequestURI();
 
+        chain.doFilter(request, response);
+        return;
+
         //具体，比如：处理若用户未登录，则跳转到登录页
-        Object userInfo = servletRequest.getSession().getAttribute("userinfo");
+        /*Object userInfo = servletRequest.getSession().getAttribute("userinfo");
         if(userInfo!=null) { //如果已登录，不阻止
             chain.doFilter(request, response);
             return;
@@ -88,7 +91,7 @@ public class SystemApplicationFilter implements Filter {
             }
         }
 
-        servletResponse.sendRedirect("/login.html");
+        servletResponse.sendRedirect("/login.html");*/
     }
 
     @Override
