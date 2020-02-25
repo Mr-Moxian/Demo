@@ -7,6 +7,8 @@ import com.sts.demo.entities.datasource.LoginParamVO;
 import com.sts.demo.service.login.ILoginService;
 import com.sts.demo.util.ImageUtil;
 import com.sts.demo.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +24,16 @@ import java.io.IOException;
 @RequestMapping(value = "/user")
 public class LoginController {
 
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+
     @Autowired
     private ILoginService iLoginService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public ResultVO login(LoginParamVO params, HttpServletRequest request){
+        LOGGER.info("-------------------登录操作开始---------------------");
         ResultVO result = new ResultVO();
         Object user = request.getSession().getAttribute("userinfo");
         Object imgCode = request.getSession().getAttribute("img_code");
@@ -35,6 +41,7 @@ public class LoginController {
             //校验码错误
             result.setMessage("验证码错误!");
             result.setSuccess(false);
+            LOGGER.error("check code is error !");
         }
         //判断会话中是否有用户，若有，则说明已登录，判断与当前输入的用户名是否一致
         else if(user != null){
@@ -43,6 +50,7 @@ public class LoginController {
                 //该用户已登录，无需再次登录
                 result.setMessage("user already login");
                 result.setSuccess(true);
+                LOGGER.info("user already login !");
             }
         }
         else{
@@ -51,10 +59,11 @@ public class LoginController {
             userVO.setUsername(params.getUsername());
             userVO.setPassword(params.getPassword());
             if(result.isSuccess()){
+                LOGGER.info("login success ! user:" + params.getUsername() );
                 request.getSession().setAttribute("userinfo",userVO);
             }
         }
-
+        LOGGER.info("-------------------登录操作结束---------------------");
         return result;
     }
 
