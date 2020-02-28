@@ -54,7 +54,7 @@
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
                 <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
 
-                <a lay-href="/user/reg" class="layadmin-user-jump-change layadmin-link">注册帐号</a>
+                <a href="./main/index.html" class="layadmin-user-jump-change layadmin-link">注册帐号</a>
             </div>
         </div>
     </div>
@@ -135,7 +135,7 @@
                 success : function(data){
                     if(data.success){
                         layuiMsgInfo("登录成功");
-                        window.location.href = "/index.html";
+                        window.location.href = "/main/index.html";
                     }
                     else{
                         layuiMsgError(data.message);
